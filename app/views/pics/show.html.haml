@@ -19,6 +19,6 @@
                 %span.glyphicon.glyphicon-thumbs-up
                 = @pic.get_upvotes.size
 
-              - if user_signed_in?
+              -if user_signed_in? && !current_user.pics.find_by(id: params[:id]).nil?
                 = link_to "Fix Pic", edit_pic_path, class: "btn btn-info"
                 = link_to "Delete", pic_path, method: :delete, data: { confirm: "Are you Sure?"}, class: "btn btn-danger"
